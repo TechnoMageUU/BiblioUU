@@ -7,10 +7,7 @@ and open the template in the editor.
 <?php
 //  setup db parms
 
-$db_server = "mysql.bibliouu.online";
-$db_userid = "bookmaster";
-$db_pwd = "b00kMast3r!";
-$db_db = "bibliouu_books";
+
 
 //  this is the skeleton of the search query. 
 //  we'll use the parms from the search form to modify it.
