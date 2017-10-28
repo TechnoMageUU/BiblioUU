@@ -19,14 +19,11 @@ $query_order = " ORDER BY Title ";
 $query_limit = " LIMIT 20 ";
 
 //  Get search parameters from the form
-$search_Title = $_POST['searchTitle'];
-$search_Author = $_POST['searchAuthor'];
+$search_Title = trim($_POST['searchTitle']);
+$search_Author = trim($_POST['searchAuthor']);
 //$search_Types = $_POST[''];
 //$search_Cats = $_POST[''];
 //$search_UU6 = $_POST[''];
-
-$search_Title  = trim($search_Title);
-$search_Author = trim($search_Author);
 
 echo "<hr />search Title=" . $search_Title ."<br />";
 echo "<hr />search Author=" . $search_Author ."<br />";
