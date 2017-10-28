@@ -31,6 +31,9 @@ and open the template in the editor.
         <h2>Unitarian Universalist Congregation of Frederick</h2>
         <h1>CUUPS Library Project</h1>
         <br />
+        <a href="http://frederickuu.org/home/index.php" button name="btnHomeUU">UU Home Page</button>       <br />                
+        <a href="http://www.cuups.org/"                 button name="btnHomeCUUPS">CUUPS Home Page</button> <br />                
+        <br />                
         <table border="1" width="350" height="275">
             <tr>
                 <td>

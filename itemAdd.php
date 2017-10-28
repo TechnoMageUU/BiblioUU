@@ -30,7 +30,7 @@ and open the template in the editor.
                     Title<br />
                 </td>
                 <td>
-                    <input type='text' name='searchTitle' >
+                    <input type='text' name='addTitle' >
                 </td>
             <tr>
                 <td colspan='2'>
@@ -44,7 +44,7 @@ and open the template in the editor.
                     Author<br />
                 </td>
                 <td>
-                    <input type='text' name='searchAuthor'>
+                    <input type='text' name='addAuthor'>
                 </td>
             <tr>
                 <td colspan='2'>
