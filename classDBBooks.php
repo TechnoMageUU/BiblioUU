@@ -13,11 +13,6 @@
  */
 
 class classDBBooks extends classDB {
-    
-    var $db_server = "mysql.bibliouu.online";
-    var $db_userid = "bookmaster";
-    var $db_pwd = "b00kMast3r!";
-    var $db_db = "bibliouu_books";
 
     var $edible;
     var $color;
@@ -102,84 +97,85 @@ class classDBBooks extends classDB {
             }
    
             
-        echo '<table class="tftable" border="1">';
-        echo '<tr>';
-        echo '<th>Title</th></th>';
-        echo '<th>Author</th>';
-        echo '<th>Item Type</th>';
-        echo '<th>Categories</th>';
-        echo '<th>UU Source</th>';
-        echo '<th>Description</th>';
-        echo '<th>Notes</th>';
-        echo '</tr>';
+        $result = '<table class="tftable" border="1">';
+        $result .= '<tr>';
+        $result .= '<th>Title</th></th>';
+        $result .= '<th>Author</th>';
+        $result .= '<th>Item Type</th>';
+        $result .= '<th>Categories</th>';
+        $result .= '<th>UU Source</th>';
+        $result .= '<th>Description</th>';
+        $result .= '<th>Notes</th>';
+        $result .= '</tr>';
         
         while ($r = $res->fetch_assoc()){
-            echo '<tr><td>';
+            $result .= '<tr><td>';
             
             $t = $r["Title"].'<br />'.$r["SubTitle"];
             $t = str_replace("'", "$quot;" , $t);
-            echo $t;
+            $result .= $t;
             //echo $r["Title"].'<br />'.$r["SubTitle"];
-            echo '</td><td>';
-            echo $r["AuthorName"];
-            echo '</td><td>';
-            echo $r["ItemType"];            
-            echo '</td><td>';
-            echo $r["Keywords"];
-            echo '</td><td>';
-            echo $r["UUCategory"];
-            echo '</td><td>';
-            echo $r["Description"];
-            echo '</td><td>';
-            echo $r["Notes"];
-            echo '</td></tr>';
+            $result .= '</td><td>';
+            $result .= $r["AuthorName"];
+            $result .= '</td><td>';
+            $result .= $r["ItemType"];            
+            $result .= '</td><td>';
+            $result .= $r["Keywords"];
+            $result .= '</td><td>';
+            $result .= $r["UUCategory"];
+            $result .= '</td><td>';
+            $result .= $r["Description"];
+            $result .= '</td><td>';
+            $result .= $r["Notes"];
+            $result .= '</td></tr>';
         }
         
-        echo "</table>";        
+        $result .= "</table>";        
 
-        echo "<br /><hr />query is<br />";
-        echo $query;
-        echo "<br /><hr />";
+        $result .= "<br /><hr />query is<br />";
+        $result .= $query;
+        $result .= "<br /><hr />";
 
-        echo "<br /><hr />connect_error<br />";
-        echo $mysqli->connect_error;
-        echo "<br /><hr />";
+        $result .= "<br /><hr />connect_error<br />";
+        $result .= $mysqli->connect_error;
+        $result .= "<br /><hr />";
 
-        echo "<hr />client info<br />";
-        echo $mysqli->client_info;
-        echo "<br />";    
+        $result .= "<hr />client info<br />";
+        $result .= $mysqli->client_info;
+        $result .= "<br />";    
 
-        echo "<hr />client version<br />";
-        echo $mysqli->client_version;
-        echo "<br />";   
+        $result .= "<hr />client version<br />";
+        $result .= $mysqli->client_version;
+        $result .= "<br />";   
         
-        echo "<hr />protocol version<br />";
-        echo $mysqli->protocol_version;
-        echo "<br />";              
+        $result .= "<hr />protocol version<br />";
+        $result .= $mysqli->protocol_version;
+        $result .= "<br />";              
             
-        echo "<hr />type of connection<br />";
-        echo $mysqli->host_info;
-        echo "<br />";                
+        $result .= "<hr />type of connection<br />";
+        $result .= $mysqli->host_info;
+        $result .= "<br />";                
 
-        echo "<hr />info about query<br />";
-        echo $mysqli->info;
-        echo "<br />";              
+        $result .= "<hr />info about query<br />";
+        $result .= $mysqli->info;
+        $result .= "<br />";              
 
-        echo "<hr />warning count<br />";
-        echo $mysqli->warning_count;
-        echo "<br />";        
+        $result .= "<hr />warning count<br />";
+        $result .= $mysqli->warning_count;
+        $result .= "<br />";        
 
-        echo "<hr />#of affected rows<br />";
-        echo $mysqli->affected_rows;
-        echo "<br />";  
+        $result .= "<hr />#of affected rows<br />";
+        $result .= $mysqli->affected_rows;
+        $result .= "<br />";  
         $numberOfRows = $mysqli->affected_rows;
         
-        echo "<hr />#of fields returned<br />";
-        echo $mysqli->field_count;
-        echo "<br />";    
+        $result .= "<hr />#of fields returned<br />";
+        $result .= $mysqli->field_count;
+        $result .= "<br />";    
         
         $res->free();
         $mysqli->close();
+        return $result;
    }
    
    

@@ -13,5 +13,8 @@
  */
 class classDB {
     //put your code here
+    
+    include incDBvars.php;
+    
 }
 ?>
