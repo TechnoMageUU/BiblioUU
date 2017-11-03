@@ -11,10 +11,11 @@
  *
  * @author Alvin
  */
+ include incDBvars.php;
+    
 class classDB {
     //put your code here
     
-    include incDBvars.php;
-    
+   
 }
 ?>

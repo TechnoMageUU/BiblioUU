@@ -17,6 +17,13 @@ class classDBBooks extends classDB {
     var $edible;
     var $color;
 
+    public $query_select = "SELECT * ";
+    public $query_from = " FROM books ";
+    public $query_where = " WHERE ItemID > 0 ";
+    public $query_order = " ORDER BY Title ";
+    public $query_limit = " LIMIT 20 ";
+    
+    
    function __construct($edible, $color="green")
    {
        parent::__construct();
@@ -47,14 +54,8 @@ class classDBBooks extends classDB {
        return "";
    }
    
-   function query($search_Title, $search_Author)
+   function querySearchResults($search_Title, $search_Author)
    {
-    $query_select = "SELECT * ";
-    $query_from = " FROM books ";
-    $query_where = " WHERE ItemID > 0 ";
-    $query_order = " ORDER BY Title ";
-    $query_limit = " LIMIT 20 ";
-
     //  Get search parameters from the form
     $search_Title = trim($search_Title);
     $search_Author = trim($search_Author );
@@ -177,6 +178,8 @@ class classDBBooks extends classDB {
         $mysqli->close();
         return $result;
    }
+   
+   
    
    
 } // end of classBooksDB
