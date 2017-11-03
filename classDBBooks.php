@@ -14,33 +14,24 @@
 
 class classDBBooks extends classDB {
 
-    var $edible;
-    var $color;
-
-    public $query_select = "SELECT * ";
-    public $query_from = " FROM books ";
-    public $query_where = " WHERE ItemID > 0 ";
-    public $query_order = " ORDER BY Title ";
-    public $query_limit = " LIMIT 20 ";
+    public $query_select;
+    public $query_from;
+    public $query_where;
+    public $query_order;
+    public $query_limit;
     
-    
-   function __construct($edible, $color="green")
+    //function __construct($edible, $color="green")
+   function __construct()
    {
        parent::__construct();
 
-       $this->edible = $edible;
-       $this->color = $color;
-   }
+    $this->query_select = "SELECT * ";
+    $this->query_from = " FROM books ";
+    $this->query_where = " WHERE ItemID > 0 ";
+    $this->query_order = " ORDER BY Title ";
+    $this->query_limit = " LIMIT 20 ";
 
-   function is_edible()
-   {
-       return $this->edible;
    }
-   function what_color()
-   {
-       return $this->color;
-   }
-
    function read()
    {
        return "";
@@ -56,13 +47,22 @@ class classDBBooks extends classDB {
    
    function querySearchResults($search_Title, $search_Author)
    {
-    //  Get search parameters from the form
+            echo '<br />search_Title='  . $search_Title; 
+            echo '<br />search_Author=' . $search_Author; 
+       
+//  Get search parameters from the form
     $search_Title = trim($search_Title);
     $search_Author = trim($search_Author );
     //$search_Types = $_POST[''];
     //$search_Cats = $_POST[''];
     //$search_UU6 = $_POST[''];
 
+    $query_select = "SELECT * ";
+    $query_from = " FROM books ";
+    $query_where = " WHERE ItemID > 0 ";
+    $query_order = " ORDER BY Title ";
+    $query_limit = " LIMIT 20 ";
+    
     if ($search_Title <> "")
     {
         $query_where .= " AND (   ( Title    LIKE '%" . $search_Title . "%' ) "
@@ -74,8 +74,9 @@ class classDBBooks extends classDB {
         $query_where .= " AND AuthorName LIKE '%" . $search_Author . "%' ";
     }
 
-     mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
-    $mysqli = new mysqli($db_server, $db_userid, $db_pwd, $db_db);
+    mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+    $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
+    
 //        $query = "SELECT * FROM books ORDER BY Title LIMIT 10";
         $query =    $query_select 
                 .   $query_from 
@@ -83,6 +84,13 @@ class classDBBooks extends classDB {
                 .   $query_order 
                 .   $query_limit;
 
+        echo '<br />query_select=' .  $query_select;
+        echo '<br />query_from=' .  $query_from; 
+        echo '<br />query_where=' .  $query_where;
+        echo '<br />query_order=' .  $query_order; 
+        echo '<br />query_limit=' .  $query_limit;
+        echo '<br />query=' . $query;
+        
         if ($mysqli->connect_errno) {
             echo "Failed to connect to MySQL: " . $mysqli->connect_error;
         }

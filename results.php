@@ -23,11 +23,14 @@ $search_Author = trim($_POST['searchAuthor']);
         <h1>Search Results</h1>
         <br />
         <?php
-            include classDB.php;
-            include classDBBooks.php;
+            echo '<br />search_Title='  . $search_Title; 
+            echo '<br />search_Author=' . $search_Author; 
+        
+            include './classDB.php';
+            include './classDBBooks.php';
             $q = new classDBBooks();
             $searchResults = $q->querySearchResults($search_Title, $search_Author);
-            echo $searchResults;
+            echo '<br />' . $searchResults;
         ?>
     </body>
 </html>
