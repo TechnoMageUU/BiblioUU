@@ -88,7 +88,7 @@ function createCategoryCode($catName)
     /*
      *  Remove all characters except A-Z and numbers
      */
-    $code = preg_replace("/[^A-Za-z0-9 ]/", '', $string);
+    $code = preg_replace("/[^A-Za-z0-9]/", '', $catName);
     $code = strtoupper($code);
     return $code;
 }
@@ -229,4 +229,4 @@ function resultDiagnostics($mysqli)
         
 }   //  end of classDBUtilities
 
-?>
+

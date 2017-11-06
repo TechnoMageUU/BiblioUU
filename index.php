@@ -108,10 +108,10 @@ and open the template in the editor.
 	-o-transition: all 1s linear;
 	transition: all 1s linear;
 }
-#nav-blue:hover {
+/*#nav-blue:hover {
 	padding-top: 60px;
 	z-index: 9;
-}
+}*/
 #nav-purple {
 	background-color: rgba(102,51,153,1);
 	position: absolute;
@@ -132,10 +132,10 @@ and open the template in the editor.
 	-o-transition: all 1s linear;
 	transition: all 1s linear;
 }
-#nav-purple:hover {
+/*#nav-purple:hover {
 	padding-top: 60px;
 	z-index: 8;
-}
+}*/
 #nav-yellow {
 	background-color: rgba(255,185,0,1);
 	position: absolute;
@@ -219,7 +219,8 @@ and open the template in the editor.
 	clear: left;
 	padding-bottom: 5px;
 	padding-top: 40px;
-	overflow: hidden;
+/*	overflow: hidden;*/
+        overflow: visible;
 	border-radius: 0px 0px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 4;
@@ -230,7 +231,7 @@ and open the template in the editor.
 	transition: all 1s linear;
 }
 #nav-brown:hover {
-	padding-top: 60px;
+	padding-top:90px;
 	z-index: 4;
 }
 #nav-pink {
@@ -281,16 +282,17 @@ and open the template in the editor.
 #logo {
 	clear: right;
 	float: right;
-	height: 252px;
+/*	height: 252px;*/
+        height: 120px;
 	width: 557px;
 	padding-left: 110px;
 }
 #greenbar {
 	clear: right;
 	float: right;
-	height: 86px;
+	height: 120px;
 	width: 667px;
-	padding-top: 20px;
+/*	padding-top: 10px;*/
 	background-color: #0E9D47;
 	font-family: Helvetica, sans-serif;
 	font-size: 14px;
@@ -304,7 +306,7 @@ and open the template in the editor.
 	float: right;
 	width: 530px;
 	font-family: Helvetica, sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 	color: #000000;
 	line-height: 18px;
 	padding-top: 22px;
@@ -338,47 +340,42 @@ and open the template in the editor.
 </head>
 <body>
     <div id="container-main">
+        <div id="navigationMenu">
+            <div class="nav-imgL"><img src="images/biblioimg2.jpg" width="150" height="175"></div>
+            <div class="nav-imgR"><img src="images/biblioimg1.jpg" width="150" height="175"></div>
+            
         <div id="logo">
-            <img alt="CUUPS Logo" id="logo_large" src="../images/logo-large.jpg" width="388" height="250">
+<!--            <img alt="CUUPS Logo" id="logo_large" src="../images/logo-large.jpg" width="388" height="250">
+            <br />-->
+            <img alt="CUUPS Library Logo" id="Librarylogo_large" src="../images/FrederickCUUPSLogoGrimoire.png" width="358" height="112">
+        </div>            
+            
+            <div class="nav-imgL"><img src="images/biblioimg4.png" width="150" height="175"></div>
+            <div class="nav-imgR"><img src="images/biblioimg3.png" width="150" height="175"></div>
         </div>
-        <div class="nav-imgL"><img src="images/biblioimg2.jpg" width="150" height="175"></div>
-        <div class="nav-imgR"><img src="images/biblioimg1.jpg" width="150" height="175"></div>
-        <div class="nav-imgL"><img src="images/biblioimg4.png" width="150" height="175"></div>
-        <div class="nav-imgR"><img src="images/biblioimg3.png" width="150" height="175"></div>
+
         <div id="greenbar">
-            "Spiritual teachings of Earth-centered traditions
-          <br>which celebrate the sacred circle of life and instruct
-          <br>us to live in harmony with the rhythms of nature."
+            <p>
+                A full, ordered and compleat compendium of all mysteries of 
+                The Library&apos;s &aelig;theric record, 
+                wherein all secrets are revealed unto our initiates, 
+                the higher mysteries are elucidated for the blessed, 
+                and all arcane symbols and sigils are explicated 
+                such that one may always walk forth illuminated.
+            </p>
         </div>
         <div id="content">
+            <h3>
+                Welcome to the Margot Adler Library.  
+            </h3>
             <p>
-                <strong>
-                    The Covenant of Unitarian Universalist Pagans (CUUPS) is an organization 
-                    dedicated to networking Pagan-identified Unitarian Universalists (UUs), 
-                    educating people about Paganism, promoting interfaith dialogue, developing Pagan 
-                    liturgies and theologies, and supporting Pagan-identified UU religious professionals.
-                </strong>
+                This library is a research collection of texts, periodicals, 
+                and other media related Earth Centered Spirituality and Pagan belief systems.
+                <br /><br />
+                The library will be available for browsing soon in Frederick, MD.  
+                <br /><br />
+                We can expand from there, of course.
             </p>
-            <p>
-              The Covenant of Unitarian Universalist Pagans (CUUPS) 
-              was chartered by&nbsp;the Unitarian Universalist Association 
-              at the General Assembly in 1987 for purposes of enabling:
-            </p>
-            <ul type="disc">
-              <li>networking among Pagan Identified UUs; providing outreach of Unitarian Universalism to the broader Pagan community continentally.</li>
-              <li>providing educational materials on Paganism for Unitarian Universalist congregations and the general public.</li>
-              <li>promoting Pagan - Jewish &amp; Christian dialogue; encouraging the development of theo/alogical and liturgical materials based on earth and nature centered religious and spiritual perspectives.</li>
-              <li>encouraging greater use of music, dance, visual arts, poetry, story, and creative ritual in Unitarian Universalist worship and celebration.</li>
-              <li>providing support for Pagan-identified UU religious professionals and ministerial students; and fostering healing relationships with our mother the Earth and all her children.</li>
-            </ul>
-            <p>&nbsp;</p> 
-            <div id="credit">
-                <p align="center">
-                    Website &COPY; 2017 Covenant of Unitarian Universalist Pagans.<br>
-                    Written materials belong to the Covenant of Unitarian Universalist Pagans<br>
-                    or the authors who have contributed the work.
-                </p>
-            </div>
         </div>
 
         <div id="nav-green">
@@ -388,7 +385,7 @@ and open the template in the editor.
             <p class="nav-text"><a href="search.php">Search</a></p>
         </div>
         <div id="nav-purple">
-            <p class="nav-text"><a href="education/index.html">Resources</a></p>
+            <p class="nav-text"><a href="techIndex.php">Tech Resources</a></p>
         </div>
         <div id="nav-yellow">
             <p class="nav-text"><a href="../press/index.php">Policies</a></p>
@@ -400,7 +397,12 @@ and open the template in the editor.
             <p class="nav-text"><a href="../forum/index.php">Forums</a></p>
         </div>
         <div id="nav-brown">
-            <p class="nav-text"><a href="http://frederickuu.org/home/index.php">UU Home</a></p>
+            <p class="nav-text">
+                <a href="https://frederickcuups.com/">Frederick CUUPS Home</a><br />
+                <a href="http://www.cuups.org/">CUUPS Home</a><br />
+                <a href="http://frederickuu.org/home/index.php">Frederick UU Home</a><br />
+                <a href="https://www.uua.org/">UU Home</a>
+            </p>
         </div>
         <div id="nav-pink">
             <p class="nav-text"><a href="contact/index.html">Contact</a></p>
