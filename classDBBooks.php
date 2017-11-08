@@ -12,6 +12,7 @@
  * @author Alvin
  */
 include './classDBUtilities.php';
+include './classCats.php';
 
 class classDBBooks extends classDB {
 
@@ -27,6 +28,7 @@ class classDBBooks extends classDB {
        parent::__construct();
 
           $this->util = new classDBUtilities();
+          $this->cats = new classCats();
        
     $this->query_select = "SELECT * ";
     $this->query_from = " FROM books ";
@@ -192,14 +194,15 @@ class classDBBooks extends classDB {
    
     function queryCategories($ItemID_Start , $ItemID_End)
    {
-            echo '<br />Starting Item ID=' . $ItemID_Start; 
-            echo '<br />Ending Item ID='   . $ItemID_End; 
+        echo '<br />queryCategories (' . $itemIDStart . ' , ' . $itemID_End . ')';
+        echo '<br />Starting Item ID=' . $ItemID_Start; 
+        echo '<br />Ending Item ID='   . $ItemID_End; 
        
-    $query_select = "SELECT * ";
-    $query_from = " FROM books ";
-    $query_where = " WHERE ItemID BETWEEN " . $ItemID_Start . " AND " . $ItemID_End;
-    $query_order = " ORDER BY ItemID ";
-    $query_limit = " LIMIT 200 ";
+        $query_select = "SELECT * ";
+        $query_from   = " FROM books ";
+        $query_where  = " WHERE ItemID BETWEEN " . $ItemID_Start . " AND " . $ItemID_End;
+        $query_order  = " ORDER BY ItemID ";
+        $query_limit  = " LIMIT 200 ";
     
     mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
     $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
@@ -241,30 +244,56 @@ class classDBBooks extends classDB {
         $result .= '</tr>';
 
         $catID = 100;
-        
+        $newFlag = ' ';
         while ($r = $res->fetch_assoc()){
             
             $category = $r["Category"] . ',' .$r["Keywords"];
             $category = str_replace("/", "," , $category);
             
+            echo '<br />Raw Categories are ' . $category;
+            
             $newCats = '';
-            $catMat = $this->util->explodeCats($category);
+            $catMat = $this->cats->explodeCats($category);
             $catMat  = array_unique($catMat);
             $newJunction = "";
             foreach ($catMat as $kitten)
             { 
+                echo '<br />The kitten is ' . $kitten;
                 $kitten = trim($kitten);
-                if (!empty($kitten) )
-                {
-                    $catCode = $this->util->createCategoryCode($kitten);
-                    $catName = $this->util->createCategoryName($kitten);
+                if (!empty($kitten) ) {
+                    $newFlag = ' ';
+                    $catCode = $this->cats->createCategoryCode($kitten);
+                    $catName = $this->cats->createCategoryName($kitten);
+                    
+                    echo '<br />Processing: Category = ' . $catCode . ' &mdash; Name = ' . $catName;
+                    
+                    /*
+                     * Now that we have CatCode and CatName, we can 
+                     * check to see if it is already in the 
+                     */
+                    $catID = $this->cats->getCatIDByCode($mysqli , $catCode);
+
+                    echo '<br >is this a new cat or olde one? catID = ' . $catID;
+                    
+                    if ($catID == 0) {        //  zero means not found
+                        
+                        echo '<br />Not Found -- inserting New';
+                        
+                        $catID = $this->cats->getNextCatID($mysqli);  // SELECT MAX(catID) + 1 FROM catNames;
+                        $returnCode = $this->cats->addCategory($mysqli, $catID, $catCode, $catName);
+                        if ($returnCode == 1) {
+                              $newFlag = " &ndash; New!";
+                        } else {
+                        $newFlag = " &ndash; ERROR!";
+                        }
+                    }
     //                $rows = deleteCategoryByCode($mysqli , $catName);
     //                $catID = insertCategory($mysqli , $catCode , $catName);
     //                $rows = linkItemToCategory($mysqli , $itemID , $catID);
 
                     $catID++;
                     $newCats .= $catID . ') ' . $catName . '&ndash;' . $catCode . '<br />';
-                    $newJunction .=  $r["ItemID"] . ' &ndash; ' . $catID . '<br />';
+                    $newJunction .=  $r["ItemID"] . ' &ndash; ' . $catID . $newFlag . '<br />';
                 }
             }
             $result .= '<tr><td>';
@@ -288,20 +317,7 @@ class classDBBooks extends classDB {
         $mysqli->close();
         return $result;
    }
-//   function explodeCats($conCats)
-//    {
-//    $manyCats = explode(",", $conCats);
-//    return $manyCats;
-//    }
-//function createCategoryCode($catName)
-//{
-//    /*
-//     *  Remove all characters except A-Z and numbers
-//     */
-//    $code = preg_replace("/[^A-Za-z0-9 ]/", '', $string);
-//    $code = strtoupper($code);
-//    return $code;
-//}    
+ 
     
     
     function queryDebugInfo($mysqli)

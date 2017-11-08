@@ -25,6 +25,9 @@ and open the template in the editor.
          //   include './classDBUtilities';
             include './classDBBooks.php';
             $q = new classDBBooks();
+            
+            echo '<hr />Preparing to call queryCategories from techCatBuild';
+            
             $searchResults = $q->queryCategories(1, 200);
             echo '<br />' . $searchResults;
         ?>

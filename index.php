@@ -366,7 +366,7 @@ and open the template in the editor.
         </div>
         <div id="content">
             <h3>
-                Welcome to the Margot Adler Library.  
+                Welcome to the Margot Adler Library.  (test)
             </h3>
             <p>
                 This library is a research collection of texts, periodicals, 
