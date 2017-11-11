@@ -192,7 +192,7 @@ class classDBBooks extends classDB {
         return $result;
    }
    
-    function queryCategories($ItemID_Start , $ItemID_End)
+    function queryCategories($ItemID_Start , $ItemID_End , $mode )
    {
         echo '<br />queryCategories (' . $itemIDStart . ' , ' . $itemID_End . ')';
         echo '<br />Starting Item ID=' . $ItemID_Start; 
@@ -250,7 +250,7 @@ class classDBBooks extends classDB {
             $category = $r["Category"] . ',' .$r["Keywords"];
             $category = str_replace("/", "," , $category);
             
-            echo '<br />Raw Categories are ' . $category;
+            echo '<hr />Raw Categories are ' . $category;
             
             $newCats = '';
             $catMat = $this->cats->explodeCats($category);
@@ -282,18 +282,22 @@ class classDBBooks extends classDB {
                         $catID = $this->cats->getNextCatID($mysqli);  // SELECT MAX(catID) + 1 FROM catNames;
                         $returnCode = $this->cats->addCategory($mysqli, $catID, $catCode, $catName);
                         if ($returnCode == 1) {
-                              $newFlag = " &ndash; New!";
+                            $newFlag = " &ndash; New!";
                         } else {
-                        $newFlag = " &ndash; ERROR!";
+                            $newFlag = " &ndash; ERROR!";
                         }
                     }
-    //                $rows = deleteCategoryByCode($mysqli , $catName);
-    //                $catID = insertCategory($mysqli , $catCode , $catName);
-    //                $rows = linkItemToCategory($mysqli , $itemID , $catID);
-
                     $catID++;
                     $newCats .= $catID . ') ' . $catName . '&ndash;' . $catCode . '<br />';
                     $newJunction .=  $r["ItemID"] . ' &ndash; ' . $catID . $newFlag . '<br />';
+                }
+                if ($mode == 'BUILD') {
+                    echo '<br />&mdash;&mdash;&mdash;BUILDING!!!&mdash;&mdash;&mdash;';
+                    $itemID = $r["ItemID"];
+                    $killOldLinks = $this->deleteOldeLinks   ($mysqli , $itemID , $catID);
+                    echo '<br />#of old links removed = ' . $killOldLinks;
+                    $newLinks     = $this->linkItemToCategory($mysqli , $itemID , $catID);
+                    echo '<br />#of new links created = ' . $newLinks;
                 }
             }
             $result .= '<tr><td>';
@@ -318,7 +322,83 @@ class classDBBooks extends classDB {
         return $result;
    }
  
-    
+   function deleteOldeLinks ($mysqli , $itemID , $catID)
+   {
+        $deletedLinkCount = 0;
+        $sql = "DELETE FROM booksXcats WHERE itemID = " . $itemID . ' AND catID = ' . $catID;
+     
+        echo '<hr />function:deleteOldeLinks  Query = ' . $sql;
+
+        $mysqli = new mysqli(db_server, db_uid_delete, db_pwd_delete, db_db);
+
+        if ($mysqli->connect_errno) {
+                echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+        }
+        if ($mysqli->errno != 0){
+            echo '<br />Error #' . $mysqli->errno . ' has been detected!!!!';
+            echo '<br />Connect Error ' . $mysqli->connect_error;
+            echo '<br />Last Error ' . $mysqli->error;
+            echo '<br />Error List ' . $mysqli->error_list;
+            echo '<br />Last Error ' . $mysqli->error;
+        }
+        
+        $res = $mysqli->query($sql);
+        
+        if ($mysqli->errno == 0) {
+            echo "<br />The DELETE query ran successfully.";
+            $deletedLinkCount = $mysqli->affected_rows;
+            echo '<br />#of Deleted Rows = affected_rows = ' . $deletedLinkCount;
+         } else {
+            echo "<br />ERROR: Could not execute " . $sql;     // ."<br />" . mysqli_error($link);
+            echo '<br />Error #' . $mysqli->errno . ' has been detected!!!!';
+            echo '<br />Last Error ' . $mysqli->error;
+            echo '<br />Error List ' . $mysqli->error_list;
+            echo '<br />Last Error ' . $mysqli->error;
+         }
+        $mysqli->close();       
+       
+        echo '<br />#of old links removed = ' . $deletedLinkCount;
+        return $deletedLinkCount;
+    }
+   function linkItemToCategory($mysqli , $itemID , $catID)
+   {
+       $newLinkCount = 0;
+        $sql = "INSERT INTO booksXcats(itemID, catID) VALUES ( " . $itemID . " , " . $catID . " )";
+     
+        echo '<hr />function:linkItemToCategory Query = ' . $sql;
+
+        $mysqli = new mysqli(db_server, db_uid_insert, db_pwd_insert, db_db);
+
+        if ($mysqli->connect_errno) {
+                echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+        }
+        if ($mysqli->errno != 0){
+            echo '<br />Error #' . $mysqli->errno . ' has been detected!!!!';
+            echo '<br />Connect Error ' . $mysqli->connect_error;
+            echo '<br />Last Error ' . $mysqli->error;
+            echo '<br />Error List ' . $mysqli->error_list;
+            echo '<br />Last Error ' . $mysqli->error;
+        }
+       
+        $res = $mysqli->query($sql);
+        
+        if ($mysqli->errno == 0) {
+            echo "<br />INSERT query ran successfully.";
+            $newLinkCount = $mysqli->affected_rows;
+            echo '<br />affected_rows = ' . $newLinkCount;
+            //$result->free();
+         } else {
+            echo "<br />ERROR: Could not execute " . $sql;     // ."<br />" . mysqli_error($link);
+            echo '<br />Error #'     . $mysqli->errno . ' has been detected!!!!';
+            echo '<br />Last Error ' . $mysqli->error;
+            echo '<br />Error List ' . $mysqli->error_list;
+            echo '<br />Last Error ' . $mysqli->error;
+         }
+        $mysqli->close();       
+       
+        echo '<br />#of new links created = ' . $newLinkCount;
+        return $newLinkCount;
+    }   
     
     function queryDebugInfo($mysqli)
     {

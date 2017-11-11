@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Tech - Build Categories</title>
+        <title>Tech - Assign Items to Categories</title>
     </head>
     <body>
-        <h1>Build Item Categories</h1>
+        <h1>Assign Items to Categories</h1>
         <ol>
             <li>Column 1 shows the item number and title.</li>
             <li>Column 2 shows the keywords and categories associated with that item by the Biblio Mage.</li>
@@ -18,7 +13,6 @@ and open the template in the editor.
             <li>Column 4 shows the entries that will be written to the booksXcats junction table.</li>
         </ol>
         <hr />
-            
         <?php
             include './classDB.php';
          //   include './classDBUtilities';
@@ -27,7 +21,7 @@ and open the template in the editor.
             
             echo '<hr />Preparing to call queryCategories from techCatBuild';
             
-            $searchResults = $q->queryCategories(1, 200 , 'BUILD');
+            $searchResults = $q->queryCategories(1, 200 , 'Preview');
             echo '<br />' . $searchResults;
         ?>
     </body>

@@ -52,7 +52,7 @@ function splitCategories(){
             $keyWords = $r["Keywords"];
           
             $catMat = explodeCats($category);
-            $keyMat = explodeCates($keyWords);
+            $keyMat = explodeCats($keyWords);
             
             foreach ($catMat as $kitten)
             {
@@ -95,6 +95,8 @@ function createCategoryCode($catName)
 function createCategoryName($catName)
 {
     $code = trim($catName);
+    $code = preg_replace("/[^A-Za-z0-9 \-]/", '', $code);
+    //$code = substr_replace( "'" , "''" , $code  );
     return $code;
 }
 function deleteCategoriesForAnItem($mysqli , $itemID)
@@ -141,31 +143,68 @@ function deleteCategoryByCode($mysqli , $codeName)
      // Close connection
      mysqli_close($link);
 }   //  end deleteCategoryByCode
-function addCategory($mysqli , $catID , $catCode , $catName)
+function addCategory($oldmysqli , $catID , $catCode , $catName)
 {
-//     $link = mysqli_connect($db_server. $db_uid_insert, $db_pwd_insert, $db_db);
-//     // Check connection
-//     if($link === false){
-//         die("ERROR: Could not connect. " . mysqli_connect_error());
-//     }
-     $sql = "INSERT INTO catNames "
+    $catNameFixed = str_replace("'","''",$catName);     //  double a single quote for correct SQL syntax
+    
+    $sql = "INSERT INTO catNames "
              .  "(  catID, catCode, catName "
              .  ") VALUES "
              .  "( " . $catID 
-             .  ", " . $catCode
-             .  ", " . $catName
+             .  ", '" . $catCode . "'"
+             .  ", '" . $catNameFixed . "'"
              .  ")";
      
-     echo 'Query = ' . $sql;
+    echo '<hr />function:addCategory Query = ' . $sql;
 
-    if(mysqli_query($link, $sql)){
-         echo "Record was inserted successfully.";
-         $numberOfRows = $mysqli->affected_rows;
-     } else{
-         echo "ERROR: Could not to execute $sql. " . mysqli_error($link);
+    $mysqli = new mysqli(db_server, db_uid_insert, db_pwd_insert, db_db);
+    
+    if ($mysqli->connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    }
+    if ($mysqli->errno != 0){
+        echo '<br />Error #' . $mysqli->errno . ' has been detected!!!!';
+        echo '<br />Connect Error ' . $mysqli->connect_error;
+        echo '<br />Last Error ' . $mysqli->error;
+        echo '<br />Error List ' . $mysqli->error_list;
+        echo '<br />Last Error ' . $mysqli->error;
+        
+    }
+    $result = $mysqli->query($sql);
+        
+//    if ($mysqli->error) {
+//        try {    
+//            throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
+//        } 
+//        catch(Exception $e ) {
+//                    echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
+//                    echo nl2br($e->getTraceAsString());
+//        }
+//    }
+//    if($result) {
+//        //if the query ran ok, do stuff
+//        $numberOfRows = $result->affected_rows;        
+//        echo '<br />#of  rows inserted = ' . $numberOfRows;
+//    } else {
+//        echo "<br />Something has gone wrong! " . $mysqli->errorno;
+//        //if it didn't, echo the error message
+//    }
+    //if ($result->num_rows == 1) {
+    //if ($result->affected_rows == 1) {
+    if ($mysqli->errno == 0) {
+        echo "<br />Record was inserted successfully.";
+        $numberOfRows = $mysqli->affected_rows;
+        echo '<br />affected_rows = ' . $numberOfRows;
+        //$result->free();
+     } else {
+        echo "<br />ERROR: Could not execute " . $sql;     // ."<br />" . mysqli_error($link);
+        echo '<br />Error #' . $mysqli->errno . ' has been detected!!!!';
+        echo '<br />Last Error ' . $mysqli->error;
+        echo '<br />Error List ' . $mysqli->error_list;
+        echo '<br />Last Error ' . $mysqli->error;
      }
-       //$catID = $mysqli->insert_id;
-     return $numberOfRows;
+    $mysqli->close();
+    return $numberOfRows;
 }   //  end of insertCategory
 
 function getCatIDByCode($mysqli , $catCode)
@@ -176,14 +215,15 @@ function getCatIDByCode($mysqli , $catCode)
     
     $result = $mysqli->query($query);
     
-    if ( $result->num_rows == 0 ) {
-        $catID = 0;
-    }
-    else {
+//    if ( $result->num_rows == 0 ) {
+//        $catID = 0;
+//    }
+//    else {
         while ($r = $result->fetch_assoc()){
             $catID = $r["catID"];
         }
-    }
+//    }
+    echo '<br />query result num_rows =' . $result->num_rows;
     echo '<br />query result =' . $catID;
     echo '<br />returning ' . $catID;
     
@@ -191,6 +231,8 @@ function getCatIDByCode($mysqli , $catCode)
 }
 function getNextCatID($mysqli)
 {
+    echo '<hr />function: getNextCatID()';
+    
     $query = "SELECT MAX(catID) AS nxt FROM catNames";
     echo '<br />getNextCatID query = ' . $query;
    
@@ -212,15 +254,63 @@ function getNextCatID($mysqli)
 }
   
   
-function countsByCategory()
+function getCountsByCategory()
 {
+    echo '<hr>classCats->getCountsByCategory()';
+    $report = "";
+    $query  = $this->queryCountsByCategory();
+    echo '<br />classCats->getCountsByCategory()->query=' . $query;
+    
+    mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+    $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
 
-    $sql = "SELECT c.CatName, COUNT(*) AS kount"
-        .   " FROM              catNames        AS	c"
-        .   " LEFT OUTER    JOIN   booksXcats   AS	x   ON	c.CatID = x.CatID"
-        .   " INNER         JOIN   books        AS	b   ON  x.ItemID = b.ItemID" 
-        .   " GROUP BY c.CatName"
-        .   " ORDER BY c.CatName";
+    if ($mysqli->connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    }
+    $result = $mysqli->query($query);
+        
+    if ($mysqli->error) {
+        try {    
+            throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
+        } catch(Exception $e ) {
+                echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
+                echo nl2br($e->getTraceAsString());
+            }
+    }
+   
+    $report = '<table class="tftable" border="1">';
+    $report .= '<th>Category Code</th>';
+    $report .= '<th>#of Linked Items</th>';
+    $report .= '</tr>';
+
+    while ($r = $result->fetch_assoc()){
+            $categoryName = $r["catName"];
+            $categoryCount = $r["kount"];
+            $report .= '<tr>';
+            $report .= '<td>' . $categoryName  . '</td>';
+            $report .= '<td>' . $categoryCount . '</td>';
+            $report .= '</tr>';
+        }
+        $report .= "</table>";        
+        
+    $result->free();
+    $mysqli->close();
+    return $report;
+}
+function queryCountsByCategory()
+{
+//    echo '<br />classCats->queryCountsByCategory()';
+    
+    $sql = ""
+        .   "SELECT  c.catName , COUNT(*) AS kount"
+        .   "  FROM        books      AS b" 
+        .   " INNER JOIN   booksXcats AS x ON b.ItemID = x.itemID"
+        .   " INNER JOIN   catNames   AS c ON x.catID  = c.catID"
+        .   " GROUP BY c.catName"
+        .   " ORDER BY 1";
+    
+//    echo '<br />' . $sql;
+    return $sql;
 }
 
     

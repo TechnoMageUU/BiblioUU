@@ -29,7 +29,7 @@ and open the template in the editor.
     <link rel='stylesheet' type='text/css' href='biblioUU.css'>
     <style type="text/css" >
             table { 
-                background: url("../images/Triple-Goddess-Symbol.png") no-repeat; 
+/*                background: url("../images/Triple-Goddess-Symbol.png") no-repeat; */
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
@@ -55,213 +55,194 @@ and open the template in the editor.
 }
 .nav-text {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-size  : 12px;
 	font-weight: bold;
-	color: rgba(255,255,255,1);
-	text-align: center;
-	vertical-align: text-bottom;
+/*	color      : rgba(255,255,255,1);*/
+	text-align : center;
+	vertical-align: middle;
 }
 .nav-text a:link,a:visited {
-	color: rgba(255,255,255,1);
+	/*color: rgba(255,255,255,1);*/
 	text-decoration: none;	
 }
 #nav-green {
+        color      : rgba(255,255,255,1);
 	background-color: rgba(12,157,70,1);
-	position: absolute;
-	top: 320px;
+/*	position: absolute;
+	top: 320px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+/*	padding-bottom: 1px;
+	padding-top   : 1px;*/
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 10;
-	-webkit-transition: all 1s linear;
+/*	-webkit-transition: all 1s linear;
 	-moz-transition: all 1s linear;
 	-ms-transition: all 1s linear;
 	-o-transition: all 1s linear;
-	transition: all 1s linear;
+	transition: all 1s linear;*/
 }
 #nav-green:hover {
-	padding-top: 60px;
-	z-index: 10;
+    color: black;
+    background-color:cornsilk;
 }
 #nav-blue {
+        color      : rgba(255,255,255,1);
 	background-color: rgba(0,153,255,1);
-	position: absolute;
+/*	position: absolute;
 	top: 320px;
-	margin-left: 158px;
+	margin-left: 158px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+        clear: left;
+	padding-bottom: 1px;
+	padding-top   : 1px;
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 9;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
-/*#nav-blue:hover {
-	padding-top: 60px;
-	z-index: 9;
-}*/
+#nav-blue:hover {
+    color: black;
+    background-color:cornsilk;
+}
 #nav-purple {
+        color      : rgba(255,255,255,1);    
 	background-color: rgba(102,51,153,1);
-	position: absolute;
-	top: 350px;
+/*	position: absolute;
+	top: 350px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
-	clear: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+        clear: left;
+	padding-bottom: 1px;
+	padding-top   : 1px;
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 8;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
-/*#nav-purple:hover {
-	padding-top: 60px;
-	z-index: 8;
-}*/
+#nav-purple:hover {
+    color: black;
+    background-color:cornsilk;
+}
 #nav-yellow {
+        color      : rgba(255,255,255,1);    
 	background-color: rgba(255,185,0,1);
-	position: absolute;
-	top: 350px;
-	margin-left: 158px;
+/*	position: absolute; */
+	top: 30px;
+	/*margin-left: 158px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
 	clear: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+	padding-bottom: 1px;
+	padding-top   : 1px;
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 7;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
 #nav-yellow:hover {
-	padding-top: 60px;
-	z-index: 7;
+    color: black;
+    background-color:cornsilk;
 }
 #nav-teal {
+        color      : rgba(255,255,255,1);    
 	background-color: rgba(0,153,153,1);
-	position: absolute;
-	top: 380px;
+/*	position: absolute;
+	top: 380px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+        clear: left;
+	padding-bottom: 1px;
+	padding-top   : 1px;
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 6;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
 #nav-teal:hover {
-	padding-top: 60px;
-	z-index: 6;
+    color: black;
+    background-color:cornsilk;
 }
 #nav-navy {
+        color      : rgba(255,255,255,1);    
 	background-color: rgba(0,0,102,1);
-	position: absolute;
+/*	position: absolute;
 	top: 380px;
-	margin-left: 158px;
+	margin-left: 158px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
-	clear: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+        clear: left;
+/*	clear: left;*/
+	padding-bottom: 1px;
+	padding-top   : 1px;
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 5;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
 #nav-navy:hover {
-	padding-top: 60px;
-	z-index: 5;
+    color: black;
+    background-color:cornsilk;
 }
 #nav-brown {
+        color      : rgba(255,255,255,1);    
 	background-color: rgba(153,51,0,1);
-	position: absolute;
-	top: 410px;
+/*	position: absolute;
+	top: 410px;*/
 	height: 30px;
 	width: 150px;
 	float: left;
-	clear: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
-/*	overflow: hidden;*/
-        overflow: visible;
-	border-radius: 0px 0px 20px 20px;
+        clear: left;
+/*	clear: left;*/
+	padding-bottom: 1px;
+	padding-top   : 1px;
+	overflow: hidden;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 4;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
 #nav-brown:hover {
-	padding-top:90px;
-	z-index: 4;
+    color: black;
+    background-color:cornsilk;
 }
 #nav-pink {
+        color      : rgba(255,255,255,1);    
 	background-color: rgba(255,0,153,1);
-	position: absolute;
-	top: 410px;
-	margin-left: 158px;
-	height: 30px;
+	height: 20px;
 	width: 150px;
 	float: left;
-	padding-bottom: 5px;
-	padding-top: 40px;
+        clear: left;
+	padding-bottom: 1px;
+	padding-top   : 1px;
 	overflow: hidden;
-	border-radius: 0px 0px 20px 20px;
+	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 3;
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
 }
 #nav-pink:hover {
-	padding-top: 60px;
-	z-index: 3;
+    color: black;
+    background-color:cornsilk;
+}
+.nav-img {
+	padding: 0px;
+	margin-bottom: 0px;
+	float: left;
+	position: relative;
+	z-index: 11;
 }
 .nav-imgR {
 	padding: 0px;
-	height: 175px;
-	width: 150px;
+/*	height: 175px;
+	width: 150px;*/
 	/* [disabled]margin-right: 8px; */
 	margin-bottom: 8px;
 	float: left;
@@ -270,8 +251,8 @@ and open the template in the editor.
 }
 .nav-imgL {
 	padding: 0px;
-	height: 175px;
-	width: 150px;
+/*	height: 175px;
+	width: 150px;*/
 	margin-right: 8px;
 	margin-bottom: 8px;
 	float: left;
@@ -280,38 +261,50 @@ and open the template in the editor.
 	z-index: 11;
 }
 #logo {
-	clear: right;
-	float: right;
+    	text-align: center;
+        vertical-align: middle;
+/*	clear: right;
+	float: right;*/
 /*	height: 252px;*/
-        height: 120px;
-	width: 557px;
-	padding-left: 110px;
+/*        height: 100px;
+	width: 600px;
+	padding-left: 110px;*/
 }
 #greenbar {
-	clear: right;
-	float: right;
-	height: 120px;
-	width: 667px;
-/*	padding-top: 10px;*/
+/*	clear: right;
+	float: right;*/
+/*	height: 100px;
+	width: 667px;*/
+	/*padding-top: 10px;*/
 	background-color: #0E9D47;
-	font-family: Helvetica, sans-serif;
-	font-size: 14px;
+	font-family: fantasy, Helvetica, sans-serif;
+	font-size: 16px;
 	color: #FFFFFF;
 	text-align: center;
+        vertical-align: middle;
 	line-height: 20px;
-	font-weight: 400;
+	font-weight: 600;
 	letter-spacing: 1pt;
+        margin-top    : 10px;
+        margin-bottom : 10px;
+        margin-right  : 10px;
+        margin-left   : 10px;
+        padding-top   : 10px;
+        padding-bottom: 10px;
+        padding-right : 10px;
+        padding-left  : 10px;
 }
 #content {
 	float: right;
-	width: 530px;
+	/*width: 530px;*/
 	font-family: Helvetica, sans-serif;
 	font-size: 14px;
 	color: #000000;
 	line-height: 18px;
-	padding-top: 22px;
-	padding-right: 57px;
-	padding-left: 80px;
+	padding-top  : 10px;
+	padding-right: 10px;
+	padding-left : 10px;
+        vertical-align: top;
 }
 #sidebar {
 	float: left;
@@ -340,74 +333,88 @@ and open the template in the editor.
 </head>
 <body>
     <div id="container-main">
-        <div id="navigationMenu">
-            <div class="nav-imgL"><img src="images/biblioimg2.jpg" width="150" height="175"></div>
-            <div class="nav-imgR"><img src="images/biblioimg1.jpg" width="150" height="175"></div>
-            
-        <div id="logo">
-<!--            <img alt="CUUPS Logo" id="logo_large" src="../images/logo-large.jpg" width="388" height="250">
-            <br />-->
-            <img alt="CUUPS Library Logo" id="Librarylogo_large" src="../images/FrederickCUUPSLogoGrimoire.png" width="358" height="112">
-        </div>            
-            
-            <div class="nav-imgL"><img src="images/biblioimg4.png" width="150" height="175"></div>
-            <div class="nav-imgR"><img src="images/biblioimg3.png" width="150" height="175"></div>
-        </div>
-
-        <div id="greenbar">
-            <p>
-                A full, ordered and compleat compendium of all mysteries of 
-                The Library&apos;s &aelig;theric record, 
-                wherein all secrets are revealed unto our initiates, 
-                the higher mysteries are elucidated for the blessed, 
-                and all arcane symbols and sigils are explicated 
-                such that one may always walk forth illuminated.
-            </p>
-        </div>
-        <div id="content">
-            <h3>
-                Welcome to the Margot Adler Library.  (test)
-            </h3>
-            <p>
-                This library is a research collection of texts, periodicals, 
-                and other media related Earth Centered Spirituality and Pagan belief systems.
-                <br /><br />
-                The library will be available for browsing soon in Frederick, MD.  
-                <br /><br />
-                We can expand from there, of course.
-            </p>
-        </div>
-
-        <div id="nav-green">
-          <p class= "nav-text"> <a href="itemSearch.php">About</a></p>
-        </div>
-        <div id="nav-blue">
-            <p class="nav-text"><a href="search.php">Search</a></p>
-        </div>
-        <div id="nav-purple">
-            <p class="nav-text"><a href="techIndex.php">Tech Resources</a></p>
-        </div>
-        <div id="nav-yellow">
-            <p class="nav-text"><a href="../press/index.php">Policies</a></p>
-        </div>
-        <div id="nav-teal">
-            <p class="nav-text"><a href="http://www.cuups.org/">CUUPS Home</a></p>
-        </div>
-        <div id="nav-navy">
-            <p class="nav-text"><a href="../forum/index.php">Forums</a></p>
-        </div>
-        <div id="nav-brown">
-            <p class="nav-text">
-                <a href="https://frederickcuups.com/">Frederick CUUPS Home</a><br />
-                <a href="http://www.cuups.org/">CUUPS Home</a><br />
-                <a href="http://frederickuu.org/home/index.php">Frederick UU Home</a><br />
-                <a href="https://www.uua.org/">UU Home</a>
-            </p>
-        </div>
-        <div id="nav-pink">
-            <p class="nav-text"><a href="contact/index.html">Contact</a></p>
-        </div>
-
+        <table border='1'>
+            <tr>
+                <td>
+                    <div class="nav-img"><img src="images/biblioimg1.jpg" width="150" height="175"></div>
+                </td>
+                <td>
+                    <div id="logo">
+                        <img alt="CUUPS Library Logo" id="Librarylogo_large" src="imates/FrederickCUUPSLogoGrimoire.png"> <!-- width="450" height="253" -->
+                    </div>                    
+                </td>
+                <td>
+                    <div class="nav-img"><img src="images/biblioimg2.jpg" width="150" height="175"></div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div id="content">
+                        <h3>
+                            Welcome to the Margot Adler Library.
+                        </h3>
+                        <p>
+                            This library is a research collection of texts, periodicals, 
+                            and other media related Earth Centered Spirituality and Pagan belief systems.
+                            <br /><br />
+                            The library will be available for browsing soon in Frederick, MD.  
+                            <br /><br />
+                            We can expand from there, of course.
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <div id="nav-green">
+                        <p class= "nav-text"> <a href="itemSearch.php">About</a></p>
+                    </div>
+                    <div id="nav-blue">
+                        <p class="nav-text"><a href="search.php">Search</a></p>
+                    </div>
+                    <div id="nav-purple">
+                        <p class="nav-text"><a href="techIndex.php">Tech Resources</a></p>
+                    </div>
+                    <div id="nav-yellow">
+                        <p class="nav-text"><a href="../press/index.php">Policies</a></p>
+                    </div>
+                    <div id="nav-teal">
+                        <p class="nav-text"><a href="http://www.cuups.org/">CUUPS Home</a></p>
+                    </div>
+                    <div id="nav-navy">
+                        <p class="nav-text"><a href="../forum/index.php">Forums</a></p>
+                    </div>
+                    <div id="nav-brown">
+                        <p class="nav-text">
+                            <a href="https://frederickcuups.com/">Frederick CUUPS Home</a><br />
+                            <a href="http://www.cuups.org/">CUUPS Home</a><br />
+                            <a href="http://frederickuu.org/home/index.php">Frederick UU Home</a><br />
+                            <a href="https://www.uua.org/">UU Home</a>
+                        </p>
+                    </div>
+                    <div id="nav-pink">
+                        <p class="nav-text"><a href="contact/index.html">Contact</a></p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="nav-img"><img src="images/biblioimg3.png" width="150" height="175"></div>
+                </td>
+                <td>
+                    <div id="greenbar">
+                            A full, ordered and compleat compendium of all mysteries of 
+                            The Library&apos;s &aelig;theric record, 
+                            wherein all secrets are revealed unto our initiates, 
+                            the higher mysteries are elucidated for the blessed, 
+                            and all arcane symbols and sigils are explicated 
+                            such that one may always walk forth illuminated.
+                    </div>                    
+                </td>
+                <td>
+                    <div class="nav-img"><img src="images/biblioimg4.png" width="150" height="175"></div>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

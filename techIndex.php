@@ -12,7 +12,9 @@ and open the template in the editor.
     <body>
         <h1>Technical Pages Index</h1>
         <ul>
-            <li><a href="techCatBuild.php">Build Categories Index</a></li>
+            <li><a href="techCatPreview.php">Preview Categories Index</a></li>
+            <li><a href="techCatBuild.php">Build Categories and Assign to Items</a></li>
+            <li><a href="techCatCounts.php">Display Counts by Category</a></li>
         </ul>
         <?php
         // put your code here
