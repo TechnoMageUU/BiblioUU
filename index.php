@@ -26,7 +26,14 @@ and open the template in the editor.
     </script>
     <meta name="keywords" content="library Wicca, Pagan, Paganism, Asatru, Celtic, Unitarian, Universalist, UUA, earth-centered, nature-centered, spiritual, religion, interfaith, Unitarian Universalist Association, UU ministry, seventh principle">
     
-    <link rel='stylesheet' type='text/css' href='biblioUU.css'>
+    <script src="./scripts/jquery-3.2.1.min.js"></script>
+    <script src="./scripts/jquery-ui.min.js"></script>
+    <script src="./scripts/biblioUU.js"></script>
+    
+    <link rel='stylesheet' type='text/css' href='./styles/jquery-ui.min.css'>
+    <link rel='stylesheet' type='text/css' href='./styles/jquery-ui.structure.css'>
+    <link rel='stylesheet' type='text/css' href='./styles/jquery-ui.theme.min.css'>
+    <link rel='stylesheet' type='text/css' href='./styles/biblioUU.css'>
     <style type="text/css" >
             table { 
 /*                background: url("../images/Triple-Goddess-Symbol.png") no-repeat; */
@@ -46,18 +53,20 @@ and open the template in the editor.
 <style type="text/css">
 #container-main {
 	margin: auto;
-	padding-left: 25px;
-	height: 800px;
-	width: 975px;
+	padding-left : 20px;
+        padding-right: 20px;
+/*	height: 800px;*/
+	width : 975px;
 	position: inherit;
-	background-color: rgba(255,255,255,1);
+	/*background-color: rgba(255,255,255,1);*/
+        background-color: #fceeb6;
 	z-index: -1;
 }
 .nav-text {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size  : 12px;
 	font-weight: bold;
-/*	color      : rgba(255,255,255,1);*/
+        color      : white;
 	text-align : center;
 	vertical-align: middle;
 }
@@ -66,171 +75,218 @@ and open the template in the editor.
 	text-decoration: none;	
 }
 #nav-green {
-        color      : rgba(255,255,255,1);
 	background-color: rgba(12,157,70,1);
-/*	position: absolute;
-	top: 320px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
-/*	padding-bottom: 1px;
-	padding-top   : 1px;*/
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 10;
-/*	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;*/
+        text-align : center;
+	vertical-align: middle;
 }
 #nav-green:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-green {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-blue {
         color      : rgba(255,255,255,1);
 	background-color: rgba(0,153,255,1);
-/*	position: absolute;
-	top: 320px;
-	margin-left: 158px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
         clear: left;
-	padding-bottom: 1px;
-	padding-top   : 1px;
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 9;
+        text-align : center;
+	vertical-align: middle;        
 }
 #nav-blue:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-blue {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-purple {
         color      : rgba(255,255,255,1);    
 	background-color: rgba(102,51,153,1);
-/*	position: absolute;
-	top: 350px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
         clear: left;
-	padding-bottom: 1px;
-	padding-top   : 1px;
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 8;
+        text-align : center;
+	vertical-align: middle;
 }
 #nav-purple:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-purple {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-yellow {
         color      : rgba(255,255,255,1);    
 	background-color: rgba(255,185,0,1);
-/*	position: absolute; */
-	top: 30px;
-	/*margin-left: 158px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
 	clear: left;
-	padding-bottom: 1px;
-	padding-top   : 1px;
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 7;
+        text-align : center;
+	vertical-align: middle;        
 }
 #nav-yellow:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-yellow {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-teal {
         color      : rgba(255,255,255,1);    
 	background-color: rgba(0,153,153,1);
-/*	position: absolute;
-	top: 380px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
         clear: left;
-	padding-bottom: 1px;
-	padding-top   : 1px;
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 6;
+        text-align : center;
+	vertical-align: middle;        
 }
 #nav-teal:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-teal {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-navy {
         color      : rgba(255,255,255,1);    
 	background-color: rgba(0,0,102,1);
-/*	position: absolute;
-	top: 380px;
-	margin-left: 158px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
         clear: left;
-/*	clear: left;*/
-	padding-bottom: 1px;
-	padding-top   : 1px;
-	overflow: hidden;
+        overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 5;
+        text-align : center;
+	vertical-align: middle;        
 }
 #nav-navy:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-navy {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-brown {
         color      : rgba(255,255,255,1);    
 	background-color: rgba(153,51,0,1);
-/*	position: absolute;
-	top: 410px;*/
-	height: 30px;
+	height: 35px;
 	width: 150px;
 	float: left;
         clear: left;
-/*	clear: left;*/
-	padding-bottom: 1px;
-	padding-top   : 1px;
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 4;
+        text-align : center;
+	vertical-align: middle;        
 }
 #nav-brown:hover {
     color: black;
     background-color:cornsilk;
 }
+.roundButt-brown {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 #nav-pink {
-        color      : rgba(255,255,255,1);    
+        color      : white;
 	background-color: rgba(255,0,153,1);
-	height: 20px;
+	height: 35px;
 	width: 150px;
 	float: left;
         clear: left;
-	padding-bottom: 1px;
-	padding-top   : 1px;
 	overflow: hidden;
 	border-radius: 20px 20px 20px 20px;
 	box-shadow: 0px 2px 8px #000000;
 	z-index: 3;
+        text-align : center;
+	vertical-align: middle;        
 }
 #nav-pink:hover {
     color: black;
     background-color:cornsilk;
+}
+.roundButt-pink {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
 }
 .nav-img {
 	padding: 0px;
@@ -276,14 +332,14 @@ and open the template in the editor.
 /*	height: 100px;
 	width: 667px;*/
 	/*padding-top: 10px;*/
-	background-color: #0E9D47;
+/*	background-color: #0E9D47;*/
 	font-family: fantasy, Helvetica, sans-serif;
 	font-size: 16px;
-	color: #FFFFFF;
+	color: black;
 	text-align: center;
         vertical-align: middle;
 	line-height: 20px;
-	font-weight: 600;
+	font-weight: 400;
 	letter-spacing: 1pt;
         margin-top    : 10px;
         margin-bottom : 10px;
@@ -295,7 +351,7 @@ and open the template in the editor.
         padding-left  : 10px;
 }
 #content {
-	float: right;
+	float: left;
 	/*width: 530px;*/
 	font-family: Helvetica, sans-serif;
 	font-size: 14px;
@@ -329,70 +385,95 @@ and open the template in the editor.
 	line-height: 12px;
 	color: rgba(0,0,0,1);
 }
+.roundButt {
+    border:1px #333 solid;
+    padding:5px;
+    margin:5px;
+    background-color:#dbf4c8;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    border-radius:40px;
+}
 </style>        
 </head>
 <body>
+    <script>
+        $(document).ready(function() {
+            homeHideAll();
+            homeShowAbout();
+            $("#btnSearch").click(function(){btnSearch_OnClick();} );
+            $("#btnContact").click(function(){btnContact_OnClick();} );
+            $("#btnAbout").click(function(){btnAbout_OnClick();}   );
+            $("#btnResources").click(function(){btnResources_OnClick();}   );
+            $("#btnHome").click(function(){btnHome_OnClick();}   );
+            $("#btnPolicies").click(function(){btnPolicies_OnClick();}   );
+            $("#btnForums").click(function(){btnForums_OnClick();}   );
+            $("#btnLogon").click(function(){btnLogon_OnClick();}   );
+        });
+    </script>
+    
     <div id="container-main">
         <table border='1'>
             <tr>
                 <td>
-                    <div class="nav-img"><img src="images/biblioimg1.jpg" width="150" height="175"></div>
+                    <div class="nav-img"><img src="images/biblioimg1.png" width="150" height="175"></div>
                 </td>
                 <td>
                     <div id="logo">
-                        <img alt="CUUPS Library Logo" id="Librarylogo_large" src="imates/FrederickCUUPSLogoGrimoire.png"> <!-- width="450" height="253" -->
+                        <img alt="CUUPS Library Logo" id="Librarylogo_large" src="images/FrederickCUUPSLogoGrimoire2.png"> <!-- width="450" height="253" -->
                     </div>                    
                 </td>
                 <td>
-                    <div class="nav-img"><img src="images/biblioimg2.jpg" width="150" height="175"></div>
+                    <div class="nav-img"><img src="images/biblioimg2.png" width="150" height="175"></div>
                 </td>
             </tr>
             <tr>
-                <td></td>
                 <td>
-                    <div id="content">
-                        <h3>
-                            Welcome to the Margot Adler Library.
-                        </h3>
-                        <p>
-                            This library is a research collection of texts, periodicals, 
-                            and other media related Earth Centered Spirituality and Pagan belief systems.
-                            <br /><br />
-                            The library will be available for browsing soon in Frederick, MD.  
-                            <br /><br />
-                            We can expand from there, of course.
-                        </p>
+                    <div id="nav-green">
+                        <input id="btnSearch" type="button" value="Search" class="roundButt-green"/>
+                    </div>
+                    <div id="nav-blue" style="text-align:center;vertical-align: middle;">
+                        <input id="btnPolicies" type="button" value="Policies" class="roundButt-blue"/>
+                    </div>
+                    <div id="nav-purple">
+                        <input id="btnAbout" type="button" value="About" class="roundButt-purple"/>
+                    </div>
+                    <div id="nav-yellow">
+                        <input id="btnContact" type="button" value="Contact" class="roundButt-yellow"/>
                     </div>
                 </td>
                 <td>
-                    <div id="nav-green">
-                        <p class= "nav-text"> <a href="itemSearch.php">About</a></p>
+                    <div id='divSearch'>
+                            <?php include './incSearch.php'; ?>
                     </div>
-                    <div id="nav-blue">
-                        <p class="nav-text"><a href="search.php">Search</a></p>
+                    <div id='divAbout'>
+                            <?php include './incAbout.php'; ?>
+                    </div>                    
+                    <div id='divContact'>
+                            <?php include './incContact.php'; ?>
+                    </div>                    
+                    <div id='divResources'>
+                            <?php include './incResources.php'; ?>
+                    </div>                    
+                    <div id='divLogon'>
+                            <?php include './incLogon.php'; ?>
                     </div>
-                    <div id="nav-purple">
-                        <p class="nav-text"><a href="techIndex.php">Tech Resources</a></p>
+                    <div id='divHome'>
+                            <?php include './incHome.php'; ?>
                     </div>
-                    <div id="nav-yellow">
-                        <p class="nav-text"><a href="../press/index.php">Policies</a></p>
-                    </div>
+                </td>
+                <td>
                     <div id="nav-teal">
-                        <p class="nav-text"><a href="http://www.cuups.org/">CUUPS Home</a></p>
+                        <input id="btnForums" type="button" value="Forums" class="roundButt-teal"/>
                     </div>
                     <div id="nav-navy">
-                        <p class="nav-text"><a href="../forum/index.php">Forums</a></p>
+                        <input id="btnResources" type="button" value="Resources" class="roundButt-navy"/>
                     </div>
                     <div id="nav-brown">
-                        <p class="nav-text">
-                            <a href="https://frederickcuups.com/">Frederick CUUPS Home</a><br />
-                            <a href="http://www.cuups.org/">CUUPS Home</a><br />
-                            <a href="http://frederickuu.org/home/index.php">Frederick UU Home</a><br />
-                            <a href="https://www.uua.org/">UU Home</a>
-                        </p>
+                        <input id="btnLogon" type="button" value="Logon/Register" class="roundButt-brown"/>
                     </div>
                     <div id="nav-pink">
-                        <p class="nav-text"><a href="contact/index.html">Contact</a></p>
+                        <input id="btnHome" type="button" value="Home" class="roundButt-pink"/>
                     </div>
                 </td>
             </tr>

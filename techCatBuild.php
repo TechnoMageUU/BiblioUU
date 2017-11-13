@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Tech - Build Categories</title>
+        <link rel='stylesheet' type='text/css' href='biblioUU.css'>        
     </head>
     <body>
         <h1>Build Item Categories</h1>

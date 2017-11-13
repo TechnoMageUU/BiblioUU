@@ -256,10 +256,10 @@ function getNextCatID($mysqli)
   
 function getCountsByCategory()
 {
-    echo '<hr>classCats->getCountsByCategory()';
+    //echo '<hr>classCats->getCountsByCategory()';
     $report = "";
     $query  = $this->queryCountsByCategory();
-    echo '<br />classCats->getCountsByCategory()->query=' . $query;
+    //echo '<br />classCats->getCountsByCategory()->query=' . $query;
     
     mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
     $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
