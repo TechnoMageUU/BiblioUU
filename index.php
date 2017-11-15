@@ -25,15 +25,9 @@ and open the template in the editor.
             })();
     </script>
     <meta name="keywords" content="library Wicca, Pagan, Paganism, Asatru, Celtic, Unitarian, Universalist, UUA, earth-centered, nature-centered, spiritual, religion, interfaith, Unitarian Universalist Association, UU ministry, seventh principle">
-    
-    <script src="./scripts/jquery-3.2.1.min.js"></script>
-    <script src="./scripts/jquery-ui.min.js"></script>
-    <script src="./scripts/biblioUU.js"></script>
-    
-    <link rel='stylesheet' type='text/css' href='./styles/jquery-ui.min.css'>
-    <link rel='stylesheet' type='text/css' href='./styles/jquery-ui.structure.css'>
-    <link rel='stylesheet' type='text/css' href='./styles/jquery-ui.theme.min.css'>
-    <link rel='stylesheet' type='text/css' href='./styles/biblioUU.css'>
+    <?php
+    include './incScripts.php';
+    ?>
     <style type="text/css" >
             table { 
 /*                background: url("../images/Triple-Goddess-Symbol.png") no-repeat; */
@@ -406,7 +400,7 @@ and open the template in the editor.
             $("#btnAbout").click(function(){btnAbout_OnClick();}   );
             $("#btnResources").click(function(){btnResources_OnClick();}   );
             $("#btnHome").click(function(){btnHome_OnClick();}   );
-            $("#btnPolicies").click(function(){btnPolicies_OnClick();}   );
+            $("#btnPolicy").click(function(){btnPolicy_OnClick();}   );
             $("#btnForums").click(function(){btnForums_OnClick();}   );
             $("#btnLogon").click(function(){btnLogon_OnClick();}   );
         });
@@ -433,7 +427,7 @@ and open the template in the editor.
                         <input id="btnSearch" type="button" value="Search" class="roundButt-green"/>
                     </div>
                     <div id="nav-blue" style="text-align:center;vertical-align: middle;">
-                        <input id="btnPolicies" type="button" value="Policies" class="roundButt-blue"/>
+                        <input id="btnPolicy" type="button" value="Policies" class="roundButt-blue"/>
                     </div>
                     <div id="nav-purple">
                         <input id="btnAbout" type="button" value="About" class="roundButt-purple"/>

@@ -11,8 +11,8 @@
  *
  * @author Alvin
  */
-include './classDBUtilities.php';
-include './classCats.php';
+//include './classDBUtilities.php';
+//include './classCats.php';
 
 class classDBBooks extends classDB {
 
@@ -49,36 +49,78 @@ class classDBBooks extends classDB {
    {
        return "";
    }
+    function getItemCount()
+    {
+        $report = "";
+        $query  = "SELECT COUNT(*) AS kount FROM books";
+    
+        mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+        $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
+
+        if ($mysqli->connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+        }
+        $result = $mysqli->query($query);
+        
+        if ($mysqli->error) {
+            try {    
+                throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
+            } catch(Exception $e ) {
+                    echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
+                    echo nl2br($e->getTraceAsString());
+                }
+        }
+        //$resultCount = $result->num_rows;
+        while ($r = $result->fetch_assoc()){
+            $report = $r["kount"];
+        }
+        $result->free();
+        $mysqli->close();
+        return $report;
+    }
    
-   function querySearchResults($search_Title, $search_Author)
+   function querySearchResults($search_Title, $search_Author , $search_Types , $search_Cats)
    {
-            echo '<br />search_Title='  . $search_Title; 
+            echo '<br />search_Title ='  . $search_Title; 
             echo '<br />search_Author=' . $search_Author; 
+            echo '<br />search_Types =' . $search_Types; 
+            echo '<br />search_Cats  =' . $search_Cats; 
        
 //  Get search parameters from the form
     $search_Title = trim($search_Title);
     $search_Author = trim($search_Author );
-    //$search_Types = $_POST[''];
-    //$search_Cats = $_POST[''];
-    //$search_UU6 = $_POST[''];
+    $search_Types = trim($search_Types );
+    $search_Cats = trim($search_Cats );
 
     $query_select = "SELECT * ";
-    $query_from = " FROM books ";
-    $query_where = " WHERE ItemID > 0 ";
-    $query_order = " ORDER BY Title ";
-    $query_limit = " LIMIT 20 ";
-    
+    $query_from = " FROM books AS b "
+                .   " INNER JOIN   booksXcats AS x ON b.ItemID = x.itemID"
+                .   " INNER JOIN   catNames   AS c ON x.catID  = c.catID";
+
+    $query_where = " WHERE ( b.ItemID > 0 ) ";
+    $query_group = " GROUP BY b.Title ";
+    $query_order = " ORDER BY b.Title ";
+    $query_limit = " LIMIT 200 ";
+        
     if ($search_Title <> "")
     {
-        $query_where .= " AND (   ( Title    LIKE '%" . $search_Title . "%' ) "
-                     .  "      OR ( SubTitle LIKE '%" . $search_Title . "%' ) "
+        $query_where .= " AND (   ( b.Title    LIKE '%" . $search_Title . "%' ) "
+                     .  "      OR ( b.SubTitle LIKE '%" . $search_Title . "%' ) "
                      .  "     ) ";
     }
     if ($search_Author <> "")
     {
-        $query_where .= " AND AuthorName LIKE '%" . $search_Author . "%' ";
+        $query_where .= " AND ( b.AuthorName LIKE '%" . $search_Author . "%' ) ";
     }
-
+    if ($search_Types <> "")
+    {
+        $query_where .= " AND ( b.ItemType IN (" . $search_Types . ") OR ItemType IS NULL )";
+    }
+    if ($search_Cats <> "")
+    {
+        $query_where .= " AND ( c.catCode IN (" . $search_Cats . ") ) ";
+    }
+    
     mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
     $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
     
@@ -86,12 +128,14 @@ class classDBBooks extends classDB {
         $query =    $query_select 
                 .   $query_from 
                 .   $query_where
+                .   $query_group 
                 .   $query_order 
                 .   $query_limit;
 
         echo '<br />query_select=' .  $query_select;
         echo '<br />query_from=' .  $query_from; 
         echo '<br />query_where=' .  $query_where;
+        echo '<br />query_group=' .  $query_group; 
         echo '<br />query_order=' .  $query_order; 
         echo '<br />query_limit=' .  $query_limit;
         echo '<br />query=' . $query;
@@ -150,42 +194,42 @@ class classDBBooks extends classDB {
         $result .= $query;
         $result .= "<br /><hr />";
 
-        $result .= "<br /><hr />connect_error<br />";
-        $result .= $mysqli->connect_error;
-        $result .= "<br /><hr />";
-
-        $result .= "<hr />client info<br />";
-        $result .= $mysqli->client_info;
-        $result .= "<br />";    
-
-        $result .= "<hr />client version<br />";
-        $result .= $mysqli->client_version;
-        $result .= "<br />";   
-        
-        $result .= "<hr />protocol version<br />";
-        $result .= $mysqli->protocol_version;
-        $result .= "<br />";              
-            
-        $result .= "<hr />type of connection<br />";
-        $result .= $mysqli->host_info;
-        $result .= "<br />";                
-
-        $result .= "<hr />info about query<br />";
-        $result .= $mysqli->info;
-        $result .= "<br />";              
-
-        $result .= "<hr />warning count<br />";
-        $result .= $mysqli->warning_count;
-        $result .= "<br />";        
-
-        $result .= "<hr />#of affected rows<br />";
-        $result .= $mysqli->affected_rows;
-        $result .= "<br />";  
-        $numberOfRows = $mysqli->affected_rows;
-        
-        $result .= "<hr />#of fields returned<br />";
-        $result .= $mysqli->field_count;
-        $result .= "<br />";    
+//        $result .= "<br /><hr />connect_error<br />";
+//        $result .= $mysqli->connect_error;
+//        $result .= "<br /><hr />";
+//
+//        $result .= "<hr />client info<br />";
+//        $result .= $mysqli->client_info;
+//        $result .= "<br />";    
+//
+//        $result .= "<hr />client version<br />";
+//        $result .= $mysqli->client_version;
+//        $result .= "<br />";   
+//        
+//        $result .= "<hr />protocol version<br />";
+//        $result .= $mysqli->protocol_version;
+//        $result .= "<br />";              
+//            
+//        $result .= "<hr />type of connection<br />";
+//        $result .= $mysqli->host_info;
+//        $result .= "<br />";                
+//
+//        $result .= "<hr />info about query<br />";
+//        $result .= $mysqli->info;
+//        $result .= "<br />";              
+//
+//        $result .= "<hr />warning count<br />";
+//        $result .= $mysqli->warning_count;
+//        $result .= "<br />";        
+//
+//        $result .= "<hr />#of affected rows<br />";
+//        $result .= $mysqli->affected_rows;
+//        $result .= "<br />";  
+//        $numberOfRows = $mysqli->affected_rows;
+//        
+//        $result .= "<hr />#of fields returned<br />";
+//        $result .= $mysqli->field_count;
+//        $result .= "<br />";    
         
         $res->free();
         $mysqli->close();

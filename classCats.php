@@ -252,8 +252,6 @@ function getNextCatID($mysqli)
     echo '<br />returning ' . $catID;
     return $catID;
 }
-  
-  
 function getCountsByCategory()
 {
     //echo '<hr>classCats->getCountsByCategory()';
@@ -297,6 +295,71 @@ function getCountsByCategory()
     $mysqli->close();
     return $report;
 }
+function getCategoryCheckboxes()
+{
+    $report = "";
+    $query  = $this->queryCheckboxesByCategory();
+    //echo '<br />classCats->getCountsByCategory()->query=' . $query;
+    
+    mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
+    $mysqli = new mysqli(db_server, db_uid_select, db_pwd_select, db_db);
+
+    if ($mysqli->connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    }
+    $result = $mysqli->query($query);
+        
+    if ($mysqli->error) {
+        try {    
+            throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
+        } catch(Exception $e ) {
+                echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
+                echo nl2br($e->getTraceAsString());
+            }
+    }
+   
+    /*
+        <td colspan='1'>
+            <input type='checkbox' name='kw01' id='kw01' value='wicca'>Wicca<br />
+            <input type='checkbox' name='kw02' id='kw02' value='nordic'>Nordic<br />
+        </td>
+    */
+    $colCount = 4;
+    $resultCount = $result->num_rows;
+    $rowCount = ceil($resultCount / $colCount);
+    
+    $col = 1;
+    $cnt = 0;
+    while ($r = $result->fetch_assoc()){
+        $cnt++;
+        $categoryCode = $r["catCode"];
+        $categoryName = $r["catName"];
+        $categoryCount = $r["kount"];
+        
+        if ($col == 1 ){
+            $report .= '<tr>';      //  if 1st column, start the table row
+        }
+
+        $report .= '<td>';
+        $report .= "<input type='checkbox' name='chkCat[]'";
+        $report .= " value='" . $categoryCode . "'>" . $categoryName;
+        $report .= "&nbsp;(" . $categoryCount . ")";
+        $report .= "</td>";
+        $col++;
+
+        if ($col == 5){
+            $report .= "</tr>";
+            $col = 1;
+        }
+    }
+    if ($col != 1){
+        $report .= "</tr>";
+    }
+        
+    $result->free();
+    $mysqli->close();
+    return $report;
+}
 function queryCountsByCategory()
 {
 //    echo '<br />classCats->queryCountsByCategory()';
@@ -312,6 +375,20 @@ function queryCountsByCategory()
 //    echo '<br />' . $sql;
     return $sql;
 }
-
+function queryCheckboxesByCategory()
+{
+//    echo '<br />classCats->queryCountsByCategory()';
+    
+    $sql = ""
+        .   "SELECT  c.catCode , c.catName , COUNT(*) AS kount"
+        .   "  FROM        books      AS b" 
+        .   " INNER JOIN   booksXcats AS x ON b.ItemID = x.itemID"
+        .   " INNER JOIN   catNames   AS c ON x.catID  = c.catID"
+        .   " GROUP BY c.catCode , c.catName"
+        .   " ORDER BY 2";
+    
+//    echo '<br />' . $sql;
+    return $sql;
+}
     
 }   //  end of classCats

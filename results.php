@@ -5,12 +5,30 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
+    include './classDB.php';
+    include './classDBUtilities.php';
+    include './classDBBooks.php';
+    include './classCats.php';
+    
 //  Get search parameters from the form
 $search_Title = trim($_POST['searchTitle']);
 $search_Author = trim($_POST['searchAuthor']);
-//$search_Types = $_POST[''];
-//$search_Cats = $_POST[''];
-//$search_UU6 = $_POST[''];
+
+$search_Types = "";
+foreach($_POST['chkType'] as $checkbox){
+    echo $checkbox . ' ';
+    $search_Types .= "'" . $checkbox . "',";
+}
+$search_Types = rtrim($search_Types , ",");
+echo "<hr />Search Types<br />" . $search_Types . "<hr />";
+
+$search_Cats = "";
+foreach($_POST['chkCat'] as $checkbox){
+    echo $checkbox . ' ';
+    $search_Cats .= "'" . $checkbox . "',";
+}
+$search_Cats = rtrim($search_Cats , ",");
+echo "<hr />Search Cats<br />" . $search_Cats;
 ?>
 <html>
     <head>
@@ -19,17 +37,30 @@ $search_Author = trim($_POST['searchAuthor']);
         <link rel='stylesheet' type='text/css' href='biblioUU.css'>        
     </head>
     <body>
-        <h2>Unitarian Universalist Congregation of Frederick</h2>
-        <h1>Search Results</h1>
-        <br />
+        <table border="1">
+            <tr>
+                <td style='text-align: center; vertical-align: middle;'>
+                    <a href="index.php">
+                        <img src="images/libraryHome.png" width="100" height="128"><br />
+                        Home
+                    </a>
+                </td>
+                <td style='text-align: center; vertical-align: middle;'>
+                    <a href="search.php">
+                        <img src="images/librarySearch.png" width="100" height="128"><br />
+                        Search
+                    </a>
+                </td>                
+                <td style='text-align: center;vertical-align: middle;'>
+                    <h2>Unitarian Universalist Congregation of Frederick</h2>
+                    <h1>Search Results</h1>
+                </td>
+            </tr>            
+        </table>
+        <br />        
         <?php
-            echo '<br />search_Title='  . $search_Title; 
-            echo '<br />search_Author=' . $search_Author; 
-        
-            include './classDB.php';
-            include './classDBBooks.php';
             $q = new classDBBooks();
-            $searchResults = $q->querySearchResults($search_Title, $search_Author);
+            $searchResults = $q->querySearchResults($search_Title, $search_Author , $search_Types , $search_Cats);
             echo '<br />' . $searchResults;
         ?>
     </body>

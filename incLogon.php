@@ -21,8 +21,13 @@
                         <th>
                             Passcode:
                         </th>
+                        <td colspan="3" style='text-align:center;'>
+                            <input type='text' name='logonPasscode' value='Logon' >
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
-                            <input type='text' name='logonPasscode' >
+                            <input id="btnAdmin" type="button" value="Admin Menu" class="roundButt-yellow"/>
                         </td>
                     </tr>
                 </table>
@@ -37,9 +42,14 @@
                 Registration for Potential Mages
             </th>            
             <td>
-                Registration Widgets (just a button to take you to 
-                the registration page
+                <input id="btnRegisterNew" type="button" value="I want to become a Mage!" class="roundButt-yellow"/>
             </td>            
         </tr>
+        <tr style='border:1px double darkgoldenrod;'>
+            <td colspan='2'>
+                Temp button to the admin page<br />
+                <input id="btnAdmin" type="button" value="Admin Menu" class="roundButt-yellow"/>
+            </td>            
+        </tr>        
     </table>
 </div>
