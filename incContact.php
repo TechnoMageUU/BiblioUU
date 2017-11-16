@@ -1,5 +1,4 @@
 <?php
-
 /* 
  * Copyright 2017 Frederick CUPPS
  */
@@ -17,7 +16,8 @@
             <br />
             Contact 2
             <br /><br />
-            For questions about the web site:
+        <h4>For Questions about the Web Site</h4>
+            
             <br />
             Contact 3            
             <br /><br />
