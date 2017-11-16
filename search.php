@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-    include './classDB.php';
-    include './classDBUtilities.php';
-    include './classDBBooks.php';
-    include './classCats.php';
+    include 'library/classDB.php';
+    include 'library/classDBUtilities.php';
+    include 'library/classDBBooks.php';
+    include 'library/classCats.php';
     $books = new classDBBooks();
     $booksCount = $books->getItemCount();
     $cats = new classCats();
@@ -14,7 +14,7 @@
         <meta charset="UTF-8">
         <title>Library Search</title>
         <?php
-            include './incScripts.php';
+            include 'include/incScripts.php';
         ?>        
     </head>
     <body>

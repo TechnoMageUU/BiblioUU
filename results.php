@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
-    include './classDB.php';
-    include './classDBUtilities.php';
-    include './classDBBooks.php';
-    include './classCats.php';
+    include 'library/classDB.php';
+    include 'library/classDBUtilities.php';
+    include 'library/classDBBooks.php';
+    include 'library/classCats.php';
     
 //  Get search parameters from the form
 $search_Title = trim($_POST['searchTitle']);

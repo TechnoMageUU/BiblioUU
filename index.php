@@ -1,32 +1,15 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-<head>
+  <head>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/styles.css" />
+
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="DOnlG_4czi7QIP2QY-r1VHM4mzI2y7yeaT_1r7lq6VQ" />
     <meta charset="UTF-8">
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <title>CUUPS Library Index Page</title>
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-15514287-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-    </script>
     <meta name="keywords" content="library Wicca, Pagan, Paganism, Asatru, Celtic, Unitarian, Universalist, UUA, earth-centered, nature-centered, spiritual, religion, interfaith, Unitarian Universalist Association, UU ministry, seventh principle">
     <?php
-    include './incScripts.php';
+    require 'include/incScripts.php';
     ?>
     <style type="text/css" >
             table { 
@@ -438,22 +421,22 @@ and open the template in the editor.
                 </td>
                 <td>
                     <div id='divSearch'>
-                            <?php include './incSearch.php'; ?>
+                            <?php require 'include/incSearch.php'; ?>
                     </div>
                     <div id='divAbout'>
-                            <?php include './incAbout.php'; ?>
+                            <?php require 'include/incAbout.php'; ?>
                     </div>                    
                     <div id='divContact'>
-                            <?php include './incContact.php'; ?>
+                            <?php require 'include/incContact.php'; ?>
                     </div>                    
                     <div id='divResources'>
-                            <?php include './incResources.php'; ?>
+                            <?php require 'include/incResources.php'; ?>
                     </div>                    
                     <div id='divLogon'>
-                            <?php include './incLogon.php'; ?>
+                            <?php require 'include/incLogon.php'; ?>
                     </div>
                     <div id='divHome'>
-                            <?php include './incHome.php'; ?>
+                            <?php require 'include/incHome.php'; ?>
                     </div>
                 </td>
                 <td>
