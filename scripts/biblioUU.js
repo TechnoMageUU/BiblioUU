@@ -1,15 +1,17 @@
 /* 
  * Copyright 2017 Frederick CUPPS
  */
+function btnAdminMenu_OnClick(){
+    window.location.assign("admin/adminIndex.php");
+}
 function btnForums_OnClick(){
-    window.location.href("../forum/index.php");
-    //window.location.replace("../forum/index.php");
+    window.location.assign("forum/index.php");
 }
 function btnPolicy_OnClick(){
-    window.location.href("../press/index.php");    //">Policies</a></p>  http://stackoverflow.com");
+    window.location.assign("press/index.php");    //">Policies</a></p>  http://stackoverflow.com");
 }
 function btnSearch_OnClick(){
-    window.location.href("search.php");
+    window.location.assign("search.php");
 }
 function btnAbout_OnClick(){
     homeHideAll();
