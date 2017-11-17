@@ -13,20 +13,22 @@
                 <table>
                     <tr>
                         <th style='width:50%;'>
-                            UserID:
+                            User ID:
                         </th>
                         <td>
                             <input type='text' name='logonUID' >
                         </td>
+                    </tr>
+                    <tr>
                         <th>
                             Passcode:
                         </th>
-                        <td colspan="3" style='text-align:center;'>
+                        <td style='text-align:center;'>
                             <input type='text' name='logonPasscode' value='Logon' >
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2" style='text-align:center;'>
                             <input id="btnAdmin" type="button" value="Admin Menu" class="roundButt-yellow"/>
                         </td>
                     </tr>
@@ -48,7 +50,7 @@
         <tr style='border:1px double darkgoldenrod;'>
             <td colspan='2'>
                 Temp button to the admin page<br />
-                <input id="btnAdmin" type="button" value="Admin Menu" class="roundButt-yellow"/>
+                <input id="btnAdminMenu" type="button" value="Admin Menu" class="roundButt-yellow"/>
             </td>            
         </tr>        
     </table>

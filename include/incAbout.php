@@ -5,16 +5,16 @@
  */
 ?>
     <div id="content">
-        <h3>
-            Welcome to the 
-            <a href="https://en.wikipedia.org/wiki/Margot_Adler">
-                Margot Adler
-            </a>
-            Library.
-        </h3>
         <table>
             <tr>
                 <td>
+                    <h3>
+                        Welcome to the 
+                        <a href="https://en.wikipedia.org/wiki/Margot_Adler">
+                            Margot Adler
+                        </a>
+                        Library.
+                    </h3>
                     This library is a research collection of texts, periodicals, 
                     and other media related Earth Centered Spirituality and Pagan belief systems.
                     <br /><br />
@@ -58,8 +58,8 @@
                 <td colspan="2">
                     <?php 
                         $quoteText = "";
-                        $i = rand(1,12);
-                        switch ($i) {
+                        $j = rand(1,12);
+                        switch ($j) {
                             case 1:
                                 $quoteText = "The first time I called myself a &apost;Witch&apost; was the most magical moment of my life.";
                                 break;
@@ -83,7 +83,7 @@
                                 $quoteText = "The purpose of ritual is to change the mind of the human being."
                                             . " It's a sacred drama in which you are the audience as well as the participant,"
                                             . " and the purpose of it is to activate the parts of the mind that are not activated"
-                                            . " by everyday activity ... &apost;Magic&apost; becomes the development of techniques"
+                                            . " by everyday activity ... 'Magic' becomes the development of techniques"
                                             . " that allow communication with hidden portions of the self, and with hidden portions"
                                             . " of all other islands in this &apost;psychic sea.&apost;";
                                 break;
@@ -124,50 +124,6 @@
                         echo '</div>';
                     ?>
                 </td>
-            </tr>            
-<!--                <tr><td>
-                    <img src='images/MargotAdlerImage01.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerImage02.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerImage03.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerImage04.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerImage05.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                        <img src='images/MargotAdlerImage06.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerImage07.jpg' width='240'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerImage08.jpg' width='240'>
-                </td></tr>   
-            <tr>
-                <tr><td>
-                    <img src='images/MargotAdlerQuote01.jpg' width='900'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerQuote02.jpg' width='900'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerQuote03.jpg' width='900'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerQuote04.jpg' width='900'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerQuote05.jpg' width='900'>
-                </td></tr>   
-                <tr><td>                                
-                    <img src='images/MargotAdlerQuote06.jpg' width='900'>
-                </td></tr>   
-            -->
+            </tr>
         </table>
     </div>
