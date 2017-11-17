@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-    include './classDB.php';
-    include './classDBUtilities.php';
-    include './classCats.php';
+    include '../library/classDB.php';
+    include '../library/classDBUtilities.php';
+    include '../library/classCats.php';
     $cats = new classCats();
     $searchResults = $cats->getCountsByCategory();
 ?>
@@ -10,7 +10,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Item Count by Category</title>
-        <link rel='stylesheet' type='text/css' href='biblioUU.css'>        
+        <?php
+        require 'include/incScripts.php';
+        ?>   
     </head>
     <body>
         <h1>Item Count by Category</h1>
