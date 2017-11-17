@@ -4,7 +4,7 @@
  *
  * @author Alvin
  */
- require 'include/incDBvars.php';
+ require '../include/incDBvars.php';
     
 class classDB {
     

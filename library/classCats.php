@@ -68,12 +68,11 @@ function splitCategories(){
         $mysqli->close();
         return $result;
 }   //  end of splitCategories   
-  
 function explodeCats($conCats)
 {
     $manyCats = explode(",", $conCats);
     return $manyCats;
-}   //  end of parseCats
+}
 function createCategoryCode($catName)
 {
     /*
