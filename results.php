@@ -29,7 +29,9 @@ echo "<hr />Search Cats<br />" . $search_Cats;
     <head>
         <meta charset="UTF-8">
         <title>Search Results</title>
-        <link rel='stylesheet' type='text/css' href='biblioUU.css'>        
+        <?php
+            require 'library/incScripts.php';
+        ?>
     </head>
     <body>
         <table border="1">
