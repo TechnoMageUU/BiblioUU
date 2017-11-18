@@ -1,19 +1,9 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of classBooksDB
  *
  * @author Alvin
  */
-//include './classDBUtilities.php';
-//include './classCats.php';
-
 class classDBBooks extends classDB {
 
     public $query_select;
@@ -22,7 +12,6 @@ class classDBBooks extends classDB {
     public $query_order;
     public $query_limit;
     
-    //function __construct($edible, $color="green")
    function __construct()
    {
        parent::__construct();
@@ -164,6 +153,7 @@ class classDBBooks extends classDB {
         $result .= '<th>UU Source</th>';
         $result .= '<th>Description</th>';
         $result .= '<th>Notes</th>';
+        $result .= '<th>Bookcase and Shelf</th>';
         $result .= '</tr>';
         
         while ($r = $res->fetch_assoc()){
@@ -172,7 +162,6 @@ class classDBBooks extends classDB {
             $t = $r["Title"].'<br />'.$r["SubTitle"];
             $t = str_replace("'", "$quot;" , $t);
             $result .= $t;
-            //echo $r["Title"].'<br />'.$r["SubTitle"];
             $result .= '</td><td>';
             $result .= $r["AuthorName"];
             $result .= '</td><td>';
@@ -185,6 +174,8 @@ class classDBBooks extends classDB {
             $result .= $r["Description"];
             $result .= '</td><td>';
             $result .= $r["Notes"];
+            $result .= '</td><td>';
+            $result .= $r["BookcaseID"] . '-' . $r["ShelfID"];            
             $result .= '</td></tr>';
         }
         

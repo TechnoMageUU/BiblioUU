@@ -245,7 +245,7 @@ function getCountsByCategory()
                 echo nl2br($e->getTraceAsString());
             }
     }
-    $report = '<table class="tftable" border="1">';
+    $report = '<table class="tftable">';
     $report .= '<th>Category Code</th>';
     $report .= '<th>#of Linked Items</th>';
     $report .= '</tr>';
