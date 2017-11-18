@@ -14,11 +14,12 @@ Copyright 2017 Frederick CUPPS
         ?>        
     </head>
     <body>
-        <table border="1">
+        <table>
             <tr>
                 <td style='text-align: center; vertical-align: middle;'>
                     <a href="index.php">
-                        <img src="images/libraryHome.png" width="100" height="128"><br />
+                        <img src="images/libraryHome.png" width="100" height="128" alt='image of a cottage'>
+                        <br />
                         Home
                     </a>
                 </td>

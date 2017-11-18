@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php
-    include 'library/classDB.php';
-    include 'library/classDBUtilities.php';
-    include 'library/classCats.php';
+    require 'library/classDB.php';
+    require 'library/classDBUtilities.php';
+    include 'library/classBookcase.php';
     $bookcase = new classBookcase();
-    $searchResultsBookCase = $bookcase->getCountsByBookcase();
+    $searchResultsBookcase = $bookcase->getCountsByBookcase();
     $searchResultsShelf = $bookcase->getCountsByBookcaseAndShelf();
 ?>
 <html>
